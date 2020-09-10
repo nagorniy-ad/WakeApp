@@ -22,7 +22,7 @@ namespace WakeApp.Services
             if (remoteEndPoint.MacAddress == null)
             {
                 throw new ArgumentException(
-                    message: "MAC-адрес удаленной конечной точки не задан.",
+                    message: "MAC-адрес не задан.",
                     paramName: nameof(remoteEndPoint));
             }
 

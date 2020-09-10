@@ -9,24 +9,30 @@
 </head>
 <body class="p-5">
     <div class="d-flex justify-content-center">
-        <form class="w-75 shadow p-5">
+        <form id="wolData" class="w-75 shadow p-5" name="wolData">
             <h1 class="display-4 mb-5">Введите данные удаленного компьютера</h1>
             <div class="form-group">
-                <label>MAC-адрес</label>
-                <input type="text" class="form-control text-center" />
+                <label for="macAddress">MAC-адрес</label>
+                <input id="macAddress" type="text" class="form-control text-center" name="macAddress" />
+                <div class="invalid-feedback">MAC-адрес не задан.</div>
+                <div class="invalid-feedback">MAC-адрес некорректен.</div>
             </div>
             <div class="form-group">
-                <label>IP-адрес</label>
-                <input type="text" class="form-control text-center" aria-describedby="ipAddressHelp" />
+                <label for="ipAddress">IP-адрес</label>
+                <input id="ipAddress" type="text" class="form-control text-center" name="ipAddress" aria-describedby="ipAddressHelp" />
                 <small id="ipAddressHelp" class="form-text font-weight-light">Необязательно</small>
+                <div class="invalid-feedback">IP-адрес не задан.</div>
+                <div class="invalid-feedback">IP-адрес некорректен.</div>
             </div>
             <div class="form-group">
-                <label>Маска подсети</label>
-                <input type="text" class="form-control text-center" />
+                <label for="subnetMask">Маска подсети</label>
+                <input id="subnetMask" type="text" class="form-control text-center" name="subnetMask" aria-describedby="subnetMaskHelp" />
                 <small id="subnetMaskHelp" class="form-text font-weight-light">Обязательно, если введен IP-адрес</small>
+                <div class="invalid-feedback">Маска подсети не задана.</div>
+                <div class="invalid-feedback">Маска подсети некорректна.</div>
             </div>
             <div class="mt-5">
-                <button id="submitButton" type="submit" class="btn btn-dark p-3 shadow font-weight-light">Отправить</button>
+                <button id="send" type="submit" class="btn btn-dark p-3 shadow">Отправить</button>
             </div>
         </form>
     </div>

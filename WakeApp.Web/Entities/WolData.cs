@@ -19,7 +19,7 @@ namespace WakeApp.Web
             if (string.IsNullOrWhiteSpace(MacAddress))
             {
                 errors.Add(new ValidationResult(
-                    errorMessage: "MAC-адрес удаленной конечной точки не задан.",
+                    errorMessage: "MAC-адрес не задан.",
                     memberNames: new string[] { "macAddress" }));
             }
             else
@@ -27,7 +27,7 @@ namespace WakeApp.Web
                 if (MacAddress.IsValidMacAddress() == false)
                 {
                     errors.Add(new ValidationResult(
-                        errorMessage: "MAC-адрес удаленной конечной точки некорректен.",
+                        errorMessage: "MAC-адрес некорректен.",
                         memberNames: new string[] { "macAddress" }));
                 }
             }
@@ -36,13 +36,13 @@ namespace WakeApp.Web
                 if (IpAddress.IsValidIpAddress() == false)
                 {
                     errors.Add(new ValidationResult(
-                        errorMessage: "IP-адрес удаленной конечной точки некорректен.",
+                        errorMessage: "IP-адрес некорректен.",
                         memberNames: new string[] { "ipAddress" }));
                 }
                 if (string.IsNullOrWhiteSpace(SubnetMask))
                 {
                     errors.Add(new ValidationResult(
-                        errorMessage: "Маска подсети удаленной конечной точки не задана.",
+                        errorMessage: "Маска подсети не задана.",
                         memberNames: new string[] { "subnetMask" }));
                 }
                 else
@@ -50,7 +50,7 @@ namespace WakeApp.Web
                     if (SubnetMask.IsValidIpAddress() == false)
                     {
                         errors.Add(new ValidationResult(
-                            errorMessage: "Маска подсети удаленной конечной точки некорректна.",
+                            errorMessage: "Маска подсети некорректна.",
                             memberNames: new string[] { "subnetMask" }));
                     }
                 }
@@ -60,12 +60,12 @@ namespace WakeApp.Web
                 if (string.IsNullOrWhiteSpace(SubnetMask) == false)
                 {
                     errors.Add(new ValidationResult(
-                        errorMessage: "IP-адрес удаленной конечной точки не задан.",
+                        errorMessage: "IP-адрес не задан.",
                         memberNames: new string[] { "ipAddress" }));
                     if (SubnetMask.IsValidIpAddress() == false)
                     {
                         errors.Add(new ValidationResult(
-                            errorMessage: "Маска подсети удаленной конечной точки некорректна.",
+                            errorMessage: "Маска подсети некорректна.",
                             memberNames: new string[] { "subnetMask" }));
                     }
                 }
