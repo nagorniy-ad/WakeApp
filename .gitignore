@@ -360,3 +360,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# WakeApp specific rules
+wwwroot/css/bundle.css
+wwwroot/css/bundle.min.css
+wwwroot/js/bundle.js
+wwwroot/js/bundle.min.js
