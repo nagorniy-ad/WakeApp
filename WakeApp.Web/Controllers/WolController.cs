@@ -17,7 +17,6 @@ namespace WakeApp.Web.Controllers
         }
 
         [HttpPost]
-        [Route("api/[controller]/wakeup")]
         public async Task<IActionResult> WakeUpAsync(WolData data)
         {
             if (ModelState.IsValid == false)
