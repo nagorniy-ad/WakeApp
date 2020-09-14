@@ -11,5 +11,15 @@
                 subnetMask: wolData.subnetMask
             })
         });
+        if (response.ok == false) {
+            switch (response.status) {
+                case 400:
+                    throw new Error('Произошла ошибка валидации данных.');
+                case 500:
+                    throw new Error('Произошла внутренняя ошибка сервера.');
+                default:
+                    throw new Error('Произошла неизвестная ошибка.');
+            }
+        }
     }
 }

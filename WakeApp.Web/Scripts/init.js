@@ -5,12 +5,20 @@ function initialize() {
     if (sendButton) {
         sendButton.addEventListener('click', async function (e) {
             e.preventDefault();
-            let client = new WolClient();
-            await client.wakeUp({
+            let wolData = {
                 macAddress: '74-D4-35-0F-03-DF',
                 ipAddress: '192.168.3.131',
                 subnetMask: '255.255.255.0'
-            });
+            };
+            let notifier = new Notifier();
+            let client = new WolClient();
+            try {
+                await client.wakeUp(wolData);
+                notifier.success('Пакет успешно отправлен.');
+            }
+            catch {
+                notifier.error('Не удалось отправить пакет.');
+            }
         });
     }
     else {
