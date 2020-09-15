@@ -1,36 +1,82 @@
-﻿/// <binding BeforeBuild='build' />
-module.exports = function (grunt) {
+﻿module.exports = function (grunt) {
     grunt.initConfig({
-        clean: [
-            'wwwroot/js/bundle.js',
-            'wwwroot/css/bundle.css'
-        ],
-        concat: {
+        copy: {
             build: {
-                src: [
-                    'node_modules/jquery/dist/jquery.min.js',
-                    'node_modules/noty/lib/noty.min.js',
-                    'Scripts/notifier.js',
-                    'Scripts/wolclient.js',
-                    'Scripts/init.js'
-                ],
-                dest: 'wwwroot/js/bundle.js'
-            }
-        },
-        cssmin: {
-            build: {
-                files: {
-                    'wwwroot/css/bundle.css': [
-                        'node_modules/bootstrap/dist/css/bootstrap.css',
-                        'node_modules/noty/lib/noty.css',
-                        'node_modules/noty/lib/themes/semanticui.css'
-                    ]
-                }
+                files: [
+                    {
+                        cwd: 'node_modules/jquery/dist/',
+                        src: 'jquery.min.js',
+                        dest: 'wwwroot/js/libs/jquery/',
+                        expand: true,
+                        flatten: true
+                    },
+                    {
+                        cwd: 'node_modules/bootstrap/dist/js/',
+                        src: 'bootstrap.min.js',
+                        dest: 'wwwroot/js/libs/bootstrap/',
+                        expand: true,
+                        flatten: true
+                    },
+                    {
+                        cwd: 'node_modules/bootstrap/dist/js/',
+                        src: 'bootstrap.min.js.map',
+                        dest: 'wwwroot/js/libs/bootstrap/',
+                        expand: true,
+                        flatten: true
+                    },
+                    {
+                        cwd: 'node_modules/noty/lib/',
+                        src: 'noty.min.js',
+                        dest: 'wwwroot/js/libs/noty/',
+                        expand: true,
+                        flatten: true
+                    },
+                    {
+                        cwd: 'node_modules/noty/lib/',
+                        src: 'noty.min.js.map',
+                        dest: 'wwwroot/js/libs/noty/',
+                        expand: true,
+                        flatten: true
+                    },
+                    {
+                        cwd: 'node_modules/bootstrap/dist/css/',
+                        src: 'bootstrap.min.css',
+                        dest: 'wwwroot/css/libs/bootstrap/',
+                        expand: true,
+                        flatten: true
+                    },
+                    {
+                        cwd: 'node_modules/bootstrap/dist/css/',
+                        src: 'bootstrap.min.css.map',
+                        dest: 'wwwroot/css/libs/bootstrap/',
+                        expand: true,
+                        flatten: true
+                    },
+                    {
+                        cwd: 'node_modules/noty/lib/',
+                        src: 'noty.css',
+                        dest: 'wwwroot/css/libs/noty/',
+                        expand: true,
+                        flatten: true
+                    },
+                    {
+                        cwd: 'node_modules/noty/lib/',
+                        src: 'noty.css.map',
+                        dest: 'wwwroot/css/libs/noty/',
+                        expand: true,
+                        flatten: true
+                    },
+                    {
+                        cwd: 'node_modules/noty/lib/themes/',
+                        src: 'semanticui.css',
+                        dest: 'wwwroot/css/libs/noty/themes/',
+                        expand: true,
+                        flatten: true
+                    }
+                ]
             }
         }
     });
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.registerTask('build', ['clean','concat', 'cssmin']);
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.registerTask('build', ['copy']);
 };

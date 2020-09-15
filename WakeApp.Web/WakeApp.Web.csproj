@@ -15,7 +15,12 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\init.js" />
+    <None Include="wwwroot\js\notifier.js" />
+    <None Include="wwwroot\js\wolclient.js" />
   </ItemGroup>
 
 </Project>

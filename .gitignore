@@ -362,5 +362,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # WakeApp specific rules
-WakeApp.Web/wwwroot/css/
-WakeApp.Web/wwwroot/js/
+WakeApp.Web/wwwroot/css/libs/
+WakeApp.Web/wwwroot/js/libs/
