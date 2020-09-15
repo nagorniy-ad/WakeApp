@@ -6,32 +6,12 @@ namespace WakeApp.Web.Extensions
     {
         public static bool IsValidIpAddress(this string value)
         {
-            if (value == null)
-            {
-                return false;
-            }
-            var address = value.ToString();
-            if (string.IsNullOrWhiteSpace(address))
-            {
-                return false;
-            }
-            return Regex.IsMatch(address, @"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$");
+            return string.IsNullOrWhiteSpace(value) ? false : Regex.IsMatch(value, @"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$");
         }
 
         public static bool IsValidMacAddress(this string value)
         {
-            if (value == null)
-            {
-                return false;
-            }
-            var address = value.ToString()
-                .Replace(":", "")
-                .Replace("-", "");
-            if (string.IsNullOrWhiteSpace(address))
-            {
-                return false;
-            }
-            return Regex.IsMatch(address, @"^[a-fA-F0-9]{12}$");
+            return string.IsNullOrWhiteSpace(value) ? false : Regex.IsMatch(value, @"^([a-fA-F0-9]{2}[:-]){5}[a-fA-F0-9]{2}$");
         }
     }
 }

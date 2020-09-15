@@ -75,9 +75,12 @@ namespace WakeApp.Web
 
         public IRemoteEndPoint ToRemoteEndPoint()
         {
+            var macAddressValidFormat = MacAddress
+                .ToUpper()
+                .Replace(oldChar: ':', newChar: '-');
             return string.IsNullOrWhiteSpace(IpAddress) == false && string.IsNullOrWhiteSpace(SubnetMask) ?
-                new RemoteEndPoint(macAddress: PhysicalAddress.Parse(MacAddress.ToUpper()), ipAddress: IPAddress.Parse(IpAddress), subnetMask: IPAddress.Parse(SubnetMask)) :
-                new RemoteEndPoint(macAddress: PhysicalAddress.Parse(MacAddress.ToUpper()));
+                new RemoteEndPoint(macAddress: PhysicalAddress.Parse(macAddressValidFormat), ipAddress: IPAddress.Parse(IpAddress), subnetMask: IPAddress.Parse(SubnetMask)) :
+                new RemoteEndPoint(macAddress: PhysicalAddress.Parse(macAddressValidFormat));
         }
     }
 }
