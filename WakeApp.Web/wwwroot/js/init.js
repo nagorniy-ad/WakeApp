@@ -1,4 +1,8 @@
-﻿let sendPacketButton;
+﻿const MAC_ADDRESS_STORAGE_KEY = "macAddress";
+const IP_ADDRESS_STORAGE_KEY = "ipAddress";
+const SUBNET_MASK_STORAGE_KEY = "subnetMask";
+
+let sendPacketButton;
 let wolDataForm;
 let macAddressInput;
 let ipAddressInput;
@@ -12,6 +16,7 @@ function initialize() {
     macAddressInput = document.getElementById('macAddressInput');
     ipAddressInput = document.getElementById('ipAddressInput');
     subnetMaskInput = document.getElementById('subnetMaskInput');
+    loadValuesFromStorage();
     if (sendPacketButton) {
         sendPacketButton.addEventListener('click', function (e) {
             e.preventDefault();
@@ -41,6 +46,9 @@ async function sendPacket() {
         try {
             await client.wakeUp(wolData);
             notifier.success('Пакет успешно отправлен.');
+            localStorage.setItem(MAC_ADDRESS_STORAGE_KEY, wolData.macAddress);
+            localStorage.setItem(IP_ADDRESS_STORAGE_KEY, wolData.ipAddress);
+            localStorage.setItem(SUBNET_MASK_STORAGE_KEY, wolData.subnetMask);
         }
         catch {
             notifier.error('Не удалось отправить пакет.');
@@ -83,5 +91,20 @@ function setSubnetMaskValidationRules() {
     else {
         invalidFeedback.textContent = 'Маска подсети не задана.';
         ipAddressInput.required = false;
+    }
+}
+
+function loadValuesFromStorage() {
+    var macAddress = localStorage.getItem('macAddress');
+    if (macAddress && macAddressInput) {
+        macAddressInput.value = macAddress;
+    }
+    var ipAddress = localStorage.getItem('ipAddress');
+    if (ipAddress && ipAddressInput) {
+        ipAddressInput.value = ipAddress;
+    }
+    var subnetMask = localStorage.getItem('subnetMask');
+    if (subnetMask && subnetMaskInput) {
+        subnetMaskInput.value = subnetMask;
     }
 }
