@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ngsoft.Wol;
+using System;
 using System.Threading.Tasks;
 using WakeApp.Core;
 
@@ -41,8 +42,8 @@ namespace WakeApp.Services
             if (remoteEndPoint.IpAddress != null && remoteEndPoint.SubnetMask != null)
             {
                 await WolBuilder.Create(_localEndPoint.IpAddress, _localEndPoint.Port.Value, remoteEndPoint.MacAddress)
-                    .SetIpAddress(remoteEndPoint.IpAddress)
-                    .SetSubnetMask(remoteEndPoint.SubnetMask)
+                    .SetRemoteIpAddress(remoteEndPoint.IpAddress)
+                    .SetRemoteSubnetMask(remoteEndPoint.SubnetMask)
                     .WakeUpAsync();
             }
             else
